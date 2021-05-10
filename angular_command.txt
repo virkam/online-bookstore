@@ -1,0 +1,2 @@
+To install Bootstrap
+npm install bootstrap
