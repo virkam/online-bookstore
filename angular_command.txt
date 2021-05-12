@@ -1,2 +1,7 @@
 To install Bootstrap
 npm install bootstrap
+
+To install jQuery
+npm install jquery
+
+npm install @fortawesome/fontawesome-free
