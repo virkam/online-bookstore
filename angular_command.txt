@@ -5,3 +5,7 @@ To install jQuery
 npm install jquery
 
 npm install @fortawesome/fontawesome-free
+
+To create components pageNotFound
+
+ng g c pageNotFound --skip-Tests=true 
