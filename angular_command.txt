@@ -8,6 +8,7 @@ npm install @fortawesome/fontawesome-free
 
 To create components pageNotFound
 
-ng g c component/pageNotFound --skipTests=true 
+ng g c components/pageNotFound --skipTests=true 
 
-ng g c component/bookCategory --skipTests=true 
+ng g c components/bookCategory --skipTests=true 
+ng g c components/search --skipTests=true 
