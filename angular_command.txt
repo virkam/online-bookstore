@@ -12,3 +12,4 @@ ng g c components/pageNotFound --skipTests=true
 
 ng g c components/bookCategory --skipTests=true 
 ng g c components/search --skipTests=true 
+ng g c components/bookDetails --skipTests=true 

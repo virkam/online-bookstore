@@ -43,6 +43,12 @@ export class BookService {
 
   }
 
+  get(bookId : number) : Observable<Book>{
+
+    const bookDetilsUrl = `${this.baseUrl}/${bookId}`;
+    return this.httpClient.get<Book>(bookDetilsUrl);
+  }
+
 }
 
 interface GetResponseBooks{
