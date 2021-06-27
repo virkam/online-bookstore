@@ -28,7 +28,35 @@
                 No Books found 
             </div>
         </div>
+        <!-- Pagination selector goes here -->
+        
+        <div class="row">
+            <div class="col-md-6">
+                <!-- hangle pagesize-->
+                <div class="row">
+                    <div class="col-md-3">
+                        <span class="mr-2"> Page Size : </span> 
+
+                    </div>
+                    <div class="col-md-9">
+                        <select (change)= "updatePageSize($event.target.value)" class = "form-control-sm" style = "width:20%">
+                        <option selected >5</option>
+                        <option  >10</option>
+                        <option  >20</option>
+                        <option  >50</option>
+                        
+                        </select>
+
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-md-6">
+                    <ngb-pagination  [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="totalRecords"
+                            (pageChange) = "listBooks()"></ngb-pagination>
 
 
+            </div>
+        </div>
     </div>
 </div>
