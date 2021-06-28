@@ -17,3 +17,9 @@ npm install jw-angular-pagination --force
  npm install @ng-bootstrap/ng-bootstrap --force
  npm uninstall @ng-bootstrap/ng-bootstrap --force
 npm install ngx-pagination --save
+ng g c components/bookDetails --skipTests=true 
+npm install jw-angular-pagination --force
+ npm install @ng-bootstrap/ng-bootstrap --force
+ npm uninstall @ng-bootstrap/ng-bootstrap --force
+
+npm install @angular/localize --save

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/common/book';
 import { BookService } from 'src/app/services/book.service';
+import {NgbPaginationConfig} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-book-list',
@@ -14,6 +16,8 @@ export class BookListComponent implements OnInit {
   books: Book[] = [];
   currentCategoryId: number = 1;
   searchMode: boolean = false;
+ 
+  previousCategory : number = 1;
   // new properties for serverside paging 
   currentPage: number = 1;
   pageSize: number = 5;
@@ -21,8 +25,13 @@ export class BookListComponent implements OnInit {
 
 
   constructor(private _bookService: BookService,
-    private _activatedRoute: ActivatedRoute
-  ) { }
+    private _activatedRoute: ActivatedRoute,
+    _config : NgbPaginationConfig 
+  ) {
+        _config.maxSize = 3;
+        _config.boundaryLinks = true;
+   }
+ 
 
 
   ngOnInit(): void {
@@ -50,9 +59,18 @@ export class BookListComponent implements OnInit {
       this.currentCategoryId = +this._activatedRoute.snapshot.paramMap.get('id');
     }
     else {
-      this.currentCategoryId = 1;
+      this.currentCategoryId = 1; 
+    }
+//setting up current paget to 1, if user navigates the other categoty
+    if(this.previousCategory != this.currentCategoryId)
+    {
+      this.currentPage = 1;
+ 
     }
 
+ 
+    this.previousCategory = this.currentCategoryId;
+ 
     this._bookService.getBooks(this.currentCategoryId,this.currentPage -1,this.pageSize).subscribe(
        this.processPaginate()
       /* data =>{
@@ -64,8 +82,11 @@ export class BookListComponent implements OnInit {
 
   handleSearchBooks() {
     const keyword: string = this._activatedRoute.snapshot.paramMap.get('keyword');
-    this._bookService.searchBooks(keyword).subscribe(
-      data => this.books = data
+ 
+    this._bookService.searchBooks(keyword, this.currentPage -1,this.pageSize).subscribe(
+      this.processPaginate()
+      //data => this.books = data
+ 
       /* data =>{
         console.log(data);
       }*/
@@ -74,6 +95,9 @@ export class BookListComponent implements OnInit {
 
   updatePageSize(pageSize: number) {
     this.pageSize = pageSize;
+ 
+    this.currentPage = 1;
+ 
     this.listBooks();
   }
 
