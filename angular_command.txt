@@ -23,3 +23,7 @@ npm install jw-angular-pagination --force
  npm uninstall @ng-bootstrap/ng-bootstrap --force
 
 npm install @angular/localize --save
+
+ng g c components/cart-status --skipTests=true 
+ng g class common/cart-item --skipTests=true
+ng g service services/cart --skipTests=true
