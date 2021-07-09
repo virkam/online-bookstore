@@ -27,3 +27,4 @@ npm install @angular/localize --save
 ng g c components/cart-status --skipTests=true 
 ng g class common/cart-item --skipTests=true
 ng g service services/cart --skipTests=true
+npm i --save ngx-spinner@11.0.0
